@@ -1,0 +1,27 @@
+run_id: comparative-1-AdaptiveAlphaNet-41p-gsm8k
+method: Baseline-MOY-α0
+model:
+  name: AdaptiveAlphaNet-41p
+dataset:
+  name: gsm8k
+  split_ratios:
+    train: 0.8
+    validation: 0.1
+    test: 0.1
+training:
+  learning_rate: 0.01
+  batch_size: 16
+  epochs: 5
+  optimizer: adam
+  warmup_steps: 0
+  weight_decay: 0.0
+  gradient_clip: 0.0
+  scheduler: linear
+  seed: 42
+  additional_params:
+    alpha_t: 0.0
+    lambda: 0.5
+    eta_inner: 0.1
+optuna:
+  n_trials: 0
+  search_spaces: []

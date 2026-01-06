@@ -1,0 +1,43 @@
+defaults:
+  - _self_
+
+wandb:
+  entity: toma_tanaka
+  project: 2026-01-06
+  mode: online  # overridden in trial mode
+
+run: ""        # CLI: run=<run_id>
+results_dir: "./results"
+mode: full      # full | trial
+
+method: null
+model: {}
+
+dataset:
+  name: gsm8k
+  split_ratios:
+    train: 0.8
+    validation: 0.1
+    test: 0.1
+  preprocessing:
+    lower_case: false
+
+training:
+  learning_rate: 0.001
+  batch_size: 8
+  epochs: 1
+  optimizer: adam
+  warmup_steps: 0
+  weight_decay: 0.0
+  gradient_clip: 0.0
+  scheduler: linear
+  seed: 42
+  max_batches: 0  # 0→process all
+  additional_params:
+    T: 400
+    lambda: 0.5
+    eta_inner: 0.1
+
+optuna:
+  n_trials: 0
+  search_spaces: []
